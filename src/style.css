@@ -1,281 +1,80 @@
-.esconder {
-  display: none !important;
-  }
-  body, html{
-  height: 100%;
-  background-color:transparent;
+body {
   margin: 0%;
-  }
-  .imgCharacters {
-  padding: 0.5rem 1rem 0 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 25px;
-  }
-  
-  .imgCharacters {
-  position: relative;
-  }
-  
-  .overlay {
-  position: absolute;
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background-color: green;
-  overflow: hidden;
-  width: 100%;
-  height: 0;
-  transition: .5s ease;
-  }
-  
-  .image {
-  display: block;
-  width: 100%;
-  height: auto;
-  }
-  
-  .imgCharacters:hover .overlay {
-  bottom: 0;
-  height: 100%;
-  opacity: 0.6;
-  }
-  
-  .imgCharacters:hover .middle {
-  opacity: 1;
-  }
-  
-  .text {
-  white-space: nowrap;
-  color: black;
-  font-size: 40px;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  }
-  
-  @keyframes colorLetra {
-  2% {
-  color: #C4CAD0
-  }
-  
-  25% {
-  color: #878C8F
-  }
-  
-  50% {
-  color: #A4969B
-  }
-  
-  75% {
-  color: #655560
-  }
-  
-  100% {
-  color: black
-  }
-  }
-  
-  @keyframes slidein {
-  from {
-  margin-left: 100%;
-  width: 300%
-  }
-  
-  to {
-  margin-left: 0%;
-  width: 100%;
-  }
-  }
-  
-  #inicio {
-  background-image: url('img/Rick-and-Morty-portal-tv-show.jpg');
-  min-height: 100%;
-  min-width: 100%;
-  background-color: #cccccc;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  padding: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  background-color: transparent;
-  }
-  
-  #no_result {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: transparent;
-  border-color: black;
-  border-radius: 9px;
-  border-width: medium;
-  font-size: 26px;
-  color: green;
-  position: absolute;
-  top: 20.4em;
-  left: 13.4em;
-  }
-  .inputStyle {
-  border-color: #290025;
-  border-radius: 9px;
-  border-width: medium;
-  font-size: 15px;
-  color: rgb(44, 230, 44);
-  background-color: gray;
-  width: 200px;
-  height: 30px;
-  position: absolute;
-  top: 5px;
-  left: 6.3rem;
-  }
-  #btnInicio {
-  background-color: gray;
-  border-color: black;
-  border-radius: 9px;
-  border-width: medium;
-  font-size: 25px;
-  color: #CB9CF2;
-  animation-name: colorLetra;
+  background-color: #F5FBEF;
+}
+
+header {
+  background-color: #1B2021;
+  padding: 20px 10px;
+  color: gray;
+  text-align: left;
+  font-weight: bold;
+  position: fixed;
+  top: 15px;
+  width: 98%;
+  transition: 0.2s;
+  /* Add a transition effect (when scrolling - and font size is decreased) */
+  z-index: 5;
+  box-shadow: -1px 4px 8px rgb(107, 104, 98);
+}
+/*Export font family*/
+@font-face {
+  font-family: get_schwifty;
+  src: url(fuente/get_schwifty.ttf);
+}
+
+h2 {
+  font-family: get_schwifty;
+  margin-right: 1.5rem;
+  font-size: 4rem;
+  color: #119DA4;
+  /*rgb(44, 230, 44);*/
+  animation-direction: alternate;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
+  animation-name: slidein;
   position: absolute;
-  top: 12em;
-  left: 1.7em;
-  }
-  
-  #btnInicioData {
-    background-color: gray;
-    border-color: black;
-    border-radius: 9px;
-    border-width: medium;
-    font-size: 25px;
-    color: #CB9CF2;
-    animation-name: colorLetra;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    position: absolute;
-    top: 15em;
-    left: 1.7em;
-    }
-  #formulario, #search{
-  }
-  #search {
-  border-radius: 7px;
-  background-color: green;
-  animation-name: colorLetra;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
+  left: 6rem;
+  top: 10rem;
+}
+
+/*-----------STYLE SEARCH---------------*/
+.navSearch {
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 5px;
+  border-radius: 0px;
+  border: none;
+  background-color: papayawhip;
   cursor: pointer;
   transition: 0.5s;
-  position: absolute;
-  top: 1rem;
-  left: 64rem;
-  }
-  #formulario {
-  position: absolute;
-  top: 1rem;
-  left: 50rem;
-  }
-  .btn {
+}
+
+.btn {
   border: none;
   background-color: #eee;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
-  }
-  /* On mouse-over */
-  .btn:hover {
+}
+
+.btn:hover {
   background: inherit;
-  color: gray;
-  }
-  .botonFin{
-  border-color: #290025;
-  border-radius: 9px;
-  border-width: medium;
-  font-size: 15px;
-  color: rgb(44, 230, 44);
-  background-color: gray;
-  width: 200px;
-  height: 30px;
-  position: absolute;
-  top: 5px;
-  left: 6.3rem;
-  }
-  #btnOrder{
-  border-color: #290025;
-  border-radius: 9px;
-  border-width: medium;
-  color: rgb(44, 230, 44);
-  font-size: 15px;
-  background-color: gray;
-  width: 200px;
-  height: 30px;
-  position: absolute;
-  top: -37px;
-  left: 6.3rem;
-  }
-  @font-face {
-  font-family:get_schwifty;
-  src: url(fuente/get_schwifty.ttf);
-  }
-  h2 {
-  font-family: get_schwifty;
-  margin-right: 15rem;
-  font-size: 5rem;
-  color: rgb(44, 230, 44);
-  animation-duration: 3s;
-  animation-name: slidein;
-  animation-direction: alternate;
-  position: absolute;
-  top: 10px;
-  left: 40px;
-  } 
-  
-  #contenedor {
-  font-family: "Annie Use Your Telescope";
-  font-size: 38px;
-  color: rgb(18, 26, 99);
-  position: relative;
-  text-align: center;
-  letter-spacing: 3px;
-  padding: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  background-color: transparent;
-  }
-  #contenedorData {
-  top: 5rem;
-  font-family: "Arial";
-  font-size: 10px;
-  color: rgb(18, 26, 99);
-  position: relative;
-  text-align: center;
-  letter-spacing: 3px;
-  padding: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
-  background-color: transparent;
-  }
-  
-  #resultados {
+  color: #FFFD82;
+}
+
+#search {
+  float: right;
+  background-color: #AAF683;
+}
+
+#formulario {
+  float: right;
+}
+
+/*-----------STYLE CONTAINERS---------------*/
+#contenedor,
+.gifi {
   font-family: 'Tajawal', sans-serif;
   font-size: 20px;
   color: rgb(18, 26, 99);
@@ -289,26 +88,159 @@
   margin-right: auto;
   max-width: 100%;
   background-color: transparent;
-  top: 5rem;
-  }
-  
-  #contenedor img:hover {
-  border-radius: 20%;
-  -webkit-border-radius: 10%;
-  box-shadow: 0px 0px 15px 15px;
-  -webkit-box-shadow: 0px 0px 15px 15px;
-  animation-name: imgStyle;
+  top: 16rem;
+}
+
+.contenedorSearch {
+  font-family: 'Tajawal', sans-serif;
+  font-size: 20px;
+  color: rgb(18, 26, 99);
+  position: relative;
+  padding: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  background-color: transparent;
+  top: 15rem;
+}
+
+.myP {
+  margin-top: 25rem;
+  position: relative;
+  padding: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  background-color: transparent;
+}
+
+.myPDom {
+  font-size: 4rem;
+  animation-name: colorLetra;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
-  }
-  
-  .characters {
+}
+
+div.flex-conteiner {
+  font-family: "Annie Use Your Telescope";
+  font-size: 38px;
+  color: rgb(18, 26, 99);
+  position: relative;
+  text-align: center;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  background-color: transparent;
+}
+
+div.navSpecies {
+  display: flex;
+  position: relative;
+  top: 60px;
+  height: 100px;
+  width: 90%;
+  background-color: transparent;
+  justify-content: center;
+  z-index: 2;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+/*-----------STYLE CARD CHARACTERS---------------*/
+.characters {
   padding: 0.5rem 1rem 0 1rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 25px;
-  }
-  
-  .modal {
+}
+
+.characterSearch {
+  padding: 0.5rem 1rem 0 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 5px;
+}
+
+/*-----------BAR NAVEGATION WITH ICONS---------------*/
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #49BEAA;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: #49BEAA;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.subnav:hover .subnavbtn {
+  background-color: #AAF683;
+}
+
+.home {
+  color: #119DA4;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #AAF683;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: #49BEAA;
+  /*LETRA NAVEGACION*/
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+}
+
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+/*-----------BUTTON START---------------*/
+.modal {
   display: none;
   position: fija;
   padding: 50px;
@@ -318,116 +250,113 @@
   height: 100%;
   background-color: rgb (0, 0, 0);
   background-color: rgba (0, 0, 0, 0.5);
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgb(44, 230, 44);
+  ;
+  color: #119DA4;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+/*-----------COLOR ANIMATION AND SLIDE---------------*/
+@keyframes colorLetra {
+  2% {
+    color: #C4CAD0
   }
-  
-  #myBtn {
-  display: none; /* Hidden by default */
-  position: fixed; /* Fixed/sticky position */
-  bottom: 20px; /* Place the button at the bottom of the page */
-  right: 30px; /* Place the button 30px from the right */
-  z-index: 99; /* Make sure it does not overlap */
-  border: none; /* Remove borders */
-  outline: none; /* Remove outline */
-  background-color: red; /* Set a background color */
-  color: white; /* Text color */
-  cursor: pointer; /* Add a mouse pointer on hover */
-  padding: 15px; /* Some padding */
-  border-radius: 10px; /* Rounded corners */
-  font-size: 18px; /* Increase font size */
+
+  25% {
+    color: #878C8F
   }
-  
-  #myBtn:hover {
-  background-color: #555; /* Add a dark-grey background on hover */
+
+  50% {
+    color: #A4969B
   }
-  
-  @media (max-width: 700px){
-  h2{
-  font-family: get_schwifty;
-  margin-right: 9rem;
-  font-size: 2rem;
-  color: rgb(44, 230, 44);
-  animation-duration: 3s;
-  animation-name: slidein;
-  animation-direction: alternate;
-  position: absolute;
-  top: 5rem;
-  left: 2rem;
-  } 
-  
-  .botonFin{
-  border-color: #290025;
-  border-radius: 9px;
-  border-width: medium;
-  font-size: 10px;
-  color: rgb(44, 230, 44);
-  background-color: gray;
-  width: 170px;
-  height: 20px;
-  position: absolute;
-  top: 5px;
-  left: 5px;
+
+  75% {
+    color: #655560
   }
-  #btnOrder{
-  border-color: #290025;
-  border-radius: 9px;
-  border-width: medium;
-  color: rgb(44, 230, 44);
-  font-size: 10px;
-  background-color: gray;
-  width: 170px;
-  height: 20px;
-  position: absolute;
-  top: -37px;
-  left: 5px;
+
+  100% {
+    color: black
   }
-  #btnInicio {
-  background-color: gray;
-  border-color: black;
-  border-radius: 5px;
-  border-width: medium;
-  font-size: 17px;
-  color: #CB9CF2;
-  animation-name: colorLetra;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  position: absolute;
-  top: 15em;
-  left: 3em;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%
   }
-  #formulario, #search{
-  background-color: transparent;
-  border-color: black;
-  border-radius: 5px;
-  border-width: medium;
-  font-size: 15px;
-  color: green;
-  position: absolute;
-  top: 10em;
-  left: 3em;
+
+  to {
+    margin-left: 0%;
+    width: 100%;
   }
-  #search {
-  top: 37em;
-  left: 3em;
-  background-color: gray;
+}
+
+/*---------------SHOW SIZE PHONE------------------------*/
+@media (max-width: 700px) {
+  h2 {
+    margin-right: 2rem;
+    font-size: 1.6rem;
+    color: #119DA4;
+    /*rgb(44, 230, 44);*/
+    animation-direction: alternate;
+    position: absolute;
+    left: 3rem;
+    top: 10rem;
   }
-  #formulario {
-  top: 35em;
-  left: 2.9em;
+
+  .btn {
+    padding: 5px 10px;
+    font-size: 10px;
+    margin-top: 0.5rem;
+    margin-right: 0.1rem;
   }
-  #inicio {
-  background-image: url('img/rick-morty-cel.jpg');
-  min-height: 100%;
-  min-width: 100%;
-  background-color: #cccccc;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  padding: auto;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100%;
+
+  header {
+    padding: 10px 5px;
+    color: gray;
+    text-align: left;
+    position: fixed;
+    top: 9px;
+    width: 98%;
   }
+
+  .navbar a {
+    float: left;
+    font-size: 14px;
+    text-align: center;
+    padding: 4px 5px;
   }
+
+  .subnav .subnavbtn {
+    font-size: 16px;
+    padding: 3px 5px;
+    margin: 0;
+  }
+
+  .myP {
+    margin-top: 15rem;
+  }
+
+  .myPDom {
+    font-size: 27px;
+    animation-name: colorLetra;
+    animation-duration: 3s;
+  }
+}

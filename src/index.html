@@ -9,152 +9,80 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
   <link href="https://fonts.googleapis.com/css?family=Annie Use Your Telescope" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
 </head>
 
 <body>
-  <div id="inicio">
-    <div>
-      <h2>Rick and Morty</h2>
-    </div>
-    <input id="btnInicio" type="button" name="button" value="Search by specie">
-    <button id="btnInicioData" type="submit" value="+">All Data</button>
-    <div>
-      <form>
+  <!-- ************ WORKING WITH BAR NAVEGATION **********-->
+  <header>
+    <div id="headerx">
+      <div class="navbar">
+        <a href="#home"></a>
+        <div class="subnav">
+          <button id="homeGo" class="subnavbtn"><i class=" home ico fas fa-home fa-3x"></i></button>
+        </div>
+        <div class="subnav">
+          <button class="subnavbtn"><i id="genderx" class="ico fas fa-venus-mars fa-3x dropbtn"></i></button>
+          <div class="subnav-content">
+            <a id="Female" href="#">Female</a>
+            <a id="Male" href="#">Male</a>
+          </div>
+        </div>
+        <div class="subnav">
+          <button class="subnavbtn"><i id="especiex" class="ico fas fa-robot fa-3x"></i></button>
+          <div class="subnav-content">
+            <a id="Human" href="#">Humans</a>
+            <a id="Alien" href="#">Aliens</a>
+            <a id="Humanoid" href="#">Humanoids</a>
+            <a id="Animal" href="#">Animals</a>
+            <a id="unknown" href="#">unknowns</a>
+            <a id="Poopybutthole" href="#">Poopybuttholes</a>
+            <a id="Mytholog" href="#">Mythologs</a>
+            <a id="Vampire" href="#">Vampire</a>
+            <a id="Robot" href="#">Robots</a>
+            <a id="Cronenberg" href="#">Cronenbergs</a>
+            <a id="Disease" href="#">Diseases</a>
+            <a id="Parasite" href="#">Parasites</a>
+          </div>
+        </div>
+        <div class="subnav">
+          <button class="subnavbtn"><i id="statusx" class="ico fas fa-heartbeat fa-3x"></i></button>
+          <div class="subnav-content">
+            <a id="Alive" href="#">Alive</a>
+            <a id="Dead" href="#">Dead</a>
+          </div>
+        </div>
+        <div class="subnav">
+          <button class="subnavbtn"><i id="orderData" class="ico fas fa-sort-alpha-up-alt fa-3x"></i></button>
+          <div class="subnav-content">
+            <a id="orderAbc" href="#">SORT AZ</a>
+            <a id="orderCba" href="#">SORT ZA</a>
+          </div>
+        </div>
+        <div class="navSearch"></div>
         <input id="formulario" class="btn" name="q" type="search" class="form-control"
           placeholder="Search for character..." required>
         <button id="search" class="btnBuscar btn" type="submit" value="+">SEARCH</button>
-        <p id="no_result"></p>
-      </form>
-    </div>
-  </div>
-
-  <div id="contenedor" class="esconder">
-
-    <div id="imgHumano" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/4.jpeg"
-        alt="2">
-      <h3>Human</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
+        <div>
+        </div>
       </div>
     </div>
-
-    <div id="imgAlien" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/14.jpeg"
-        alt="2">
-      <h3>Alien</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
+  </header>
+<!-- ****************** STARTING SCREEN *************************-->
+    <div id="rickInicio" class="flex-conteiner">
+      <h2>Welcome to the wold of...</h2>
+      <img class="gifi" src="img/rickgif.gif" alt="">
     </div>
+ <!-- ************ CONTAINERS WORKING WITH DOM ********** -->
+  <div id="contenedor"> </div>
 
-    <div id="imgUnknown" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/25.jpeg"
-        alt="2">
-      <h3>Unknown</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
+  <div class="flex-conteiner myP"> </div>
 
-    <div id="imgPoopybutthole" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/30.jpeg"
-        alt="2">
-      <h3>Poopybutthole</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgMytholog" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/40.jpeg"
-        alt="2">
-      <h3>Mytholog</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgAnimal" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/46.jpeg"
-        alt="2">
-      <h3>Animal</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgVampire" class="imgCharacters">
-      <img class="image"
-        src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/374.jpeg" alt="2">
-      <h3>Vampire</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgRobot" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/71.jpeg"
-        alt="2">
-      <h3>Robot</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgCronenberg" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/82.jpeg"
-        alt="2">
-      <h3>Cronenberg</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgDiseas" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/96.jpeg"
-        alt="2">
-      <h3>Disease</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgParasito" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/16.jpeg"
-        alt="2">
-      <h3>Parasite</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-    <div id="imgHumanoide" class="imgCharacters">
-      <img class="image" src="https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/41.jpeg"
-        alt="2">
-      <br><br>
-      <h3>Humanoid</h3>
-      <div class="overlay">
-        <div class="text">Hello, click me</div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <div>
-    <input id="btnFin" class="botonFin esconder" type="button" name="button" value="GO TO HOME">
-    <button id="myBtn" title="Go to top">START</button>
-  </div>
-
-  <div id="resultados" class="esconder mostrar">
-    <input id="btnOrder" class="botonOrder" type="button" name="button" value="SORT ALPHABETICALLY">
-  </div>
-
-  <div id="contenedorData" class="esconder">
-  </div>
-
-  <script type="module" src="main.js"></script>
+  <div><button id="myBtn" title="Go to top">START</button></div>
+<!-- ***************************************************** -->
+  
+<script type="module" src="main.js"></script>
 
 </body>
 

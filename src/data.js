@@ -1,39 +1,47 @@
 import dataSet from './data/rickandmorty/rickandmorty.js';
 
-
-// ********** Filter species **********
 const dataAll = dataSet.results;
-const humans = dataSet.results.filter((human) => human.species === 'Human');
-const aliens = dataSet.results.filter((alien) => alien.species === 'Alien');
-const humanoids = dataSet.results.filter((humanoid) => humanoid.species === 'Humanoid');
-const unknowns = dataSet.results.filter((unkno) => unkno.species === 'unknown');
-const poopybuttholes = dataSet.results.filter((poopybutthole) => poopybutthole.species === 'Poopybutthole');
-const mythologs = dataSet.results.filter((mytholog) => mytholog.species === 'Mytholog');
-const animals = dataSet.results.filter((animal) => animal.species === 'Animal');
-const vampires = dataSet.results.filter((vampire) => vampire.species === 'Vampire');
-const robots = dataSet.results.filter((robot) => robot.species === 'Robot');
-const cronenbergs = dataSet.results.filter((cronenberg) => cronenberg.species === 'Cronenberg');
-const diseases = dataSet.results.filter((disease) => disease.species === 'Disease');
-const parasites = dataSet.results.filter((parasite) => parasite.species === 'Parasite');
-const episodes = dataSet.results.filter((episode) => episode.species === 'Episode');
 
-const sortAnythingByName = (array) => {
-return array.sort((a, b) => ((a.name < b.name) ? -1 : 1));
+//----------------------------FILTER FOR GENDER--------------------------------
+const filterGender = (dataAll, eventoG) => {
+    return dataAll.filter((genders) => {
+        if (genders.gender.indexOf(eventoG) !== -1) {
+            return true;
+        }
+    });
+}
+
+//----------------------------FILTER FOR SPECIES--------------------------------
+const filterX = (dataAll, evento) => {
+    return dataAll.filter((specie) => {
+        if (specie.species.indexOf(evento) !== -1) {
+            return true;
+        }
+    });
+}
+
+//----------------------------FILTER FOR STATUS--------------------------------
+const filterStatus = (dataAll, eventoSt) => {
+    return dataAll.filter((statu) => {
+        if (statu.status.indexOf(eventoSt) !== -1) {
+            return true;
+        }
+    });
+}
+
+//----------------------------ORDER FOR AZ--------------------------------
+const sortFilterAZ = (array) => {
+    return array.sort((a, b) => ((a.name < b.name) ? -1 : 1));
 };
 
+const sortFilterZA = (array) => {
+    return array.sort((a, b) => ((a.name > b.name) ? -1 : 1));
+};
 export {
-dataAll,
-humans,
-aliens,
-humanoids,
-unknowns,
-poopybuttholes,
-mythologs,
-animals,
-vampires,
-robots,
-cronenbergs,
-diseases,
-parasites,
-sortAnythingByName,
+    dataAll,
+    sortFilterAZ,
+    sortFilterZA,
+    filterX,
+    filterGender,
+    filterStatus
 };

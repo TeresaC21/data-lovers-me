@@ -1,269 +1,201 @@
 import dataSet from './data/rickandmorty/rickandmorty.js';
 import {
-dataAll,
-humans,
-aliens,
-humanoids,
-unknowns,
-poopybuttholes,
-mythologs,
-animals,
-vampires,
-robots,
-cronenbergs,
-diseases,
-parasites,
-sortAnythingByName
+    dataAll,
+    sortFilterAZ,
+    sortFilterZA,
+    filterX,
+    filterGender,
+    filterStatus
 } from './data.js';
 
-const imgCharacters = document.querySelectorAll('.imgCharacters');
-const idBotton = document.querySelector('#btnOrder');
-const idContainer = document.querySelector('#contenedor');
-const idContainerDate = document.querySelector('#contenedorData');
-
-const showInfo = (showTypes) => {
-for (let i = 0; i < showTypes.length; i++) {
-const allTypes = document.createElement('div');
-allTypes.className = 'characters';
-allTypes.innerHTML = `<img src=${showTypes[i].image}></img>` + `<p>Name: ${showTypes[i].name}</p>` + `<p>Specie: ${showTypes[i].species}</p>` + `<p>Status: ${showTypes[i].status}</p>` + `<p>Gender: ${showTypes[i].gender}</p>`;
-document.querySelector('#resultados').appendChild(allTypes);
+//----------------------------SHOW FOR GENDER--------------------------------
+const mostrarGender = (e) => {
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
+    const eventoG = e.target.id;
+    const dataGender = filterGender(dataAll, eventoG);
+    dataGender.map((genderF) => {
+        let divGender = document.createElement('div');
+        divGender.className = 'characters';
+        const templateG = `<img src=${genderF.image}></img>` + `<p>Name: ${genderF.name}</p>` + `<p>Specie: ${genderF.species}</p>` + `<p>Status: ${genderF.status}</p>` + `<p>Gender: ${genderF.gender}</p>`
+        divGender.innerHTML = templateG
+        document.querySelector('#contenedor').appendChild(divGender);
+    });
 }
-};
-const showInfoAll = (showTypes) => {
-for (let i = 0; i < showTypes.length; i++) {
-const allTypes = document.createElement('div');
-allTypes.className = 'characters';
-allTypes.innerHTML = `<img src=${showTypes[i].image}></img>` + `<p>Name: ${showTypes[i].name}</p>` + `<p>Specie: ${showTypes[i].species}</p>` + `<p>Status: ${showTypes[i].status}</p>`;
-document.querySelector('#contenedorData').appendChild(allTypes);
-}
-};
+document.querySelector('#Female').addEventListener('click', mostrarGender);
+document.querySelector('#Male').addEventListener('click', mostrarGender);
 
-//agregando id al boton buscador 
+//----------------------------SHOW FOR SPECIES--------------------------------
+const mostrarSpecie = (e) => {
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
+    const evento = e.target.id;
+    const speciesData = filterX(dataAll, evento);
+    speciesData.map((filterspecies) => {
+        let divPersonajes = document.createElement('div');
+        divPersonajes.className = 'characters';
+        const template = `<img src=${filterspecies.image}></img>` + `<p>Name: ${filterspecies.name}</p>` + `<p>Specie: ${filterspecies.species}</p>` + `<p>Status: ${filterspecies.status}</p>` + `<p>Gender: ${filterspecies.gender}</p>`
+        divPersonajes.innerHTML = template
+        document.querySelector('#contenedor').appendChild(divPersonajes);
+    });
+}
+document.querySelector('#Human').addEventListener('click', mostrarSpecie);
+document.querySelector('#Alien').addEventListener('click', mostrarSpecie);
+document.querySelector('#Humanoid').addEventListener('click', mostrarSpecie);
+document.querySelector('#Animal').addEventListener('click', mostrarSpecie);
+document.querySelector('#unknown').addEventListener('click', mostrarSpecie);
+document.querySelector('#Poopybutthole').addEventListener('click', mostrarSpecie);
+document.querySelector('#Mytholog').addEventListener('click', mostrarSpecie);
+document.querySelector('#Vampire').addEventListener('click', mostrarSpecie);
+document.querySelector('#Robot').addEventListener('click', mostrarSpecie);
+document.querySelector('#Cronenberg').addEventListener('click', mostrarSpecie);
+document.querySelector('#Disease').addEventListener('click', mostrarSpecie);
+document.querySelector('#Parasite').addEventListener('click', mostrarSpecie);
+
+//----------------------------SHOW FOR STATUS--------------------------------
+const mostrarStatus = (e) => {
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
+    const eventoSt = e.target.id;
+    const dataStatus = filterStatus(dataAll, eventoSt);
+    dataStatus.map((statusX) => {
+        let divStatus = document.createElement('div');
+        divStatus.className = 'characters';
+        const templateSt = `<img src=${statusX.image}></img>` + `<p>Name: ${statusX.name}</p>` + `<p>Specie: ${statusX.species}</p>` + `<p>Status: ${statusX.status}</p>` + `<p>Gender: ${statusX.gender}</p>`
+        divStatus.innerHTML = templateSt
+        document.querySelector('#contenedor').appendChild(divStatus);
+    });
+}
+document.querySelector('#Alive').addEventListener('click', mostrarStatus);
+document.querySelector('#Dead').addEventListener('click', mostrarStatus);
+
+//----------------------------FUNCTION SEARCH--------------------------------
+//Id button 
 const formulario = document.querySelector('#formulario');
-const resultado = document.querySelector('#resultados');
-const noResultado = document.querySelector('#no_result');
-//----------------------FUNCION BUSCADOR----------------------------------
+const resultado = document.querySelector('#contenedor');
+
 const search = () => {
-event.preventDefault()
-let characters = []
-//Obteniendo informacion del usuario
-const texto = formulario.value.toLowerCase();
-//condicional para cuando no agrega character
-if (formulario.value.length === 0) {
-window.alert("Enter the name of a character")
-} else {
-//Loop dataSet
-for (let character of dataSet.results) {
-//Busca el nombre del dataSet.results y lo convierte a minusculas
-let characterLowerCase = character.name.toLowerCase();
-//Comparando resultados (si es completamente igual a 0 si lo encontro)
-if (characterLowerCase.indexOf(texto) === 0) {
-//limpiando pantalla de resultados
-resultado.innerHTML = '';
-//agregando el resultado a la posicion 0 del array vacio (characters)
-characters[0] = character;
+    resultado.innerHTML = '';
+    //Getting user information
+    const texto = formulario.value.toLowerCase();
+    if (formulario.value.length === 0) {
+        window.alert("Enter the name of a character")
+    } else {
+        for (let character of dataSet.results) {
+            //Name dataSet.results and converse lower case
+            let characterLowerCase = character.name.toLowerCase();
+            if (characterLowerCase.indexOf(texto) !== -1) {
+                let resultadoc = document.createElement('div');
+                resultadoc.className = 'characters';
+                const templatet = `<img src=${character.image}></img>` + `<p>Name: ${character.name}</p>` + `<p>Specie: ${character.species}</p>` + `<p>Status: ${character.status}</p>` + `<p>Gender: ${character.gender}</p>`
+                resultadoc.innerHTML = templatet
+                document.querySelector('#contenedor').appendChild(resultadoc);
+                //Hide start and show in container
+                document.querySelector('#contenedor').style.display = "flex";
+                document.querySelector('#rickInicio').style.display = "none"; //break;
+            }
+        }
+        if (resultado.innerHTML === '') {
+            resultado.innerHTML += `<li>character not found...</li>`
+        }
+    }
+}
+document.querySelector('#search').addEventListener('click', search);
 
-document.querySelector('#inicio').classList.add('esconder');
-document.querySelector('#resultados').classList.remove('esconder');
-document.querySelectorAll('#resultados').innerHTML = showInfo(characters);
-break;
-}
-}
-//Si el array esta vacio (longitud = 0) no se encontro el personaje
-if (characters.length === 0) {
-noResultado.innerHTML = 'Not found';
-}
-}
-}
-document.querySelector('#search').addEventListener('click', search)
-//boton dinamico GO TO HOME para pantalla boton buscador se pueda visualizar GO TO HOME
-function dinButton() {
-//aquí instanciamos al componente padre
-let resultados = document.getElementById("resultados");
-//aquí agregamos el componente de tipo input
-let input = document.createElement("BUTTON");
-input.id = 'dinButon';
-input.className = 'inputStyle';
-//aquí indicamos que es un input de tipo button
-// input.type = 'button';
-input.innerText = 'GO TO HOME';
-//y por ultimo agreamos el componente creado al padre
-resultados.appendChild(input);
-document.querySelector('#dinButon').addEventListener('click', goToHome);
-}
-window.onload = function () {
-//Aquí referenciamos el botón que realizara la acción
-document.querySelector('#search').addEventListener('click', dinButton)
-}
-// Agregando funcion a boton dinamico (ir a inicio)
+//---------------FUNCTION FOR SHOW LIVE YOUR SEARCH______________________
+document.querySelector('#formulario').addEventListener('keyup', search);
+//search();
+
+//----------------------GO TO HOME----------------------------------
 function goToHome() {
-document.querySelector('#contenedor').classList.add('esconder');
-document.querySelector('#inicio').classList.remove('esconder');
-document.querySelector('#resultados').classList.add('esconder');
-document.querySelector('#btnFin').classList.add('esconder');
-window.location.reload();
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
+    window.location.reload();
 }
+document.querySelector('#homeGo').addEventListener('click', goToHome);
 
-// traer contenedor de especies y ocultar primer pantalla de inicio
-document.querySelector('#btnInicio').addEventListener('click', () => {
-document.querySelector('#inicio').classList.add('esconder');
-document.querySelector('#contenedor').classList.remove('esconder');
+//----------------------ORDER AZ----------------------------------
+document.querySelector('#orderAbc').addEventListener("click", () => {
+    personsAZ();
 });
-// Al dar click boton fin nos lleva a pantalla de inicio
-document.querySelector('#btnFin').addEventListener('click', () => {
-document.querySelector('#contenedor').classList.add('esconder');
-document.querySelector('#resultados').classList.add('esconder');
-document.querySelector('#inicio').classList.remove('esconder');
-document.querySelector('#btnFin').classList.add('esconder');
-window.location.reload();
-});
+const personsAZ = () => {
+    let listAZ = sortFilterAZ(dataAll, name);
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelectorAll('#contenedor').innerHTML = sortFilterAZ(listAZ);
+    document.querySelector('#rickInicio').style.display = "none";
+    dataAll.map((ordenadito) => {
+        let divOrder = document.createElement('div');
+        divOrder.className = 'characters';
+        const templateO = `<img src=${ordenadito.image}></img>` + `<p>Name: ${ordenadito.name}</p>` + `<p>Specie: ${ordenadito.species}</p>` + `<p>Status: ${ordenadito.status}</p>` + `<p>Gender: ${ordenadito.gender}</p>`
+        divOrder.innerHTML = templateO
+        document.querySelector('#contenedor').appendChild(divOrder);
+    });
+};
 
-//----------------------------BOTÓN START PARA SUBIR------------------------------------
+//----------------------ORDER ZA----------------------------------
+document.querySelector('#orderCba').addEventListener("click", () => {
+    personsZA();
+});
+const personsZA = () => {
+    let listZA = sortFilterZA(dataAll, name);
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelectorAll('#contenedor').innerHTML = sortFilterZA(listZA);
+    document.querySelector('#rickInicio').style.display = "none";
+    dataAll.map((ordenaditoZ) => {
+        let divOrderReverse = document.createElement('div');
+        divOrderReverse.className = 'characters';
+        const templateR = `<img src=${ordenaditoZ.image}></img>` + `<p>Name: ${ordenaditoZ.name}</p>` + `<p>Specie: ${ordenaditoZ.species}</p>` + `<p>Status: ${ordenaditoZ.status}</p>` + `<p>Gender: ${ordenaditoZ.gender}</p>`
+        divOrderReverse.innerHTML = templateR
+        document.querySelector('#contenedor').appendChild(divOrderReverse);
+    });
+};
+
+//----------------------------BUTTON START PARA SUBIR------------------------------------
 //Get the button:
 let mybutton = document.getElementById("myBtn");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+    scrollFunction()
+};
 
 function scrollFunction() {
-if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-mybutton.style.display = "block";
-} else {
-mybutton.style.display = "none";
-}
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 // When the user clicks on the button, scroll to the top of the document
-
 document.getElementById("myBtn").addEventListener('click', () => {
-document.body.scrollTop = 0; // For Safari
-document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
+
+//----------------------------CLICK GIF - SHOW PARRAFO------------------------------------
+function gifClick() {
+    let parrafo = document.createElement('p');
+    parrafo.className = 'myPDom';
+    const templateParr = `<p> Welcome! Start exploring in the nav bar. </p>`
+    parrafo.innerHTML = templateParr
+    document.querySelector('.myP').appendChild(parrafo);
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
+}
+document.querySelector('.gifi').addEventListener('click', gifClick);
+
+/*
+// Go start top
 function goTop() {
-document.querySelector('#contenedor').classList.add('esconder');
-document.querySelector('#resultados').classList.remove('esconder');
-document.querySelector('#myBtn').classList.remove('esconder');
+    document.querySelector("#contenedor").innerHTML = ' ';
+    document.querySelector('#contenedor').style.display = "flex";
+    document.querySelector('#rickInicio').style.display = "none";
 }
-document.querySelector('#btnOrder').addEventListener('click', goTop)
-//******************************************************************************** 
-
-//----------------Funcion para ejecutar el e.currentTarget-----------------------
-function newFunction(event) {
-const eventId = event.currentTarget.id;
-idContainer.classList.add('esconder');
-document.querySelector('#btnFin').classList.remove('esconder');
-document.querySelector('#myBtn').classList.remove('esconder');
-// aqui traemos la data de humanos
-document.querySelector('#resultados').classList.remove('esconder');
-event.preventDefault()
-if (eventId === 'imgHumano') {
-//se asigna un id al boton para que al dar click en la imagen de humans traiga el filtro de humans 
-document.querySelector('#btnOrder').className = 'humans';
-document.querySelectorAll('#resultados').innerHTML = showInfo(humans);
-}
-if (eventId === 'imgAlien') {
-document.querySelector('#btnOrder').className = 'aliens';
-document.querySelectorAll('#resultados').innerHTML = showInfo(aliens);
-}
-if (eventId === 'imgUnknown') {
-document.querySelector('#btnOrder').className = 'unknowns';
-document.querySelectorAll('#resultados').innerHTML = showInfo(unknowns);
-}
-if (eventId === 'imgPoopybutthole') {
-document.querySelector('#btnOrder').className = 'poopybuttholes';
-document.querySelectorAll('#resultados').innerHTML = showInfo(poopybuttholes);
-}
-if (eventId === 'imgMytholog') {
-document.querySelector('#btnOrder').className = 'mythologs';
-document.querySelectorAll('#resultados').innerHTML = showInfo(mythologs);
-}
-if (eventId === 'imgAnimal') {
-document.querySelector('#btnOrder').className = 'animals';
-document.querySelectorAll('#resultados').innerHTML = showInfo(animals);
-}
-if (eventId === 'imgVampire') {
-document.querySelector('#btnOrder').className = 'vampires';
-document.querySelectorAll('#resultados').innerHTML = showInfo(vampires);
-}
-if (eventId === 'imgRobot') {
-document.querySelector('#btnOrder').className = 'robots';
-document.querySelectorAll('#resultados').innerHTML = showInfo(robots);
-}
-if (eventId === 'imgCronenberg') {
-document.querySelector('#btnOrder').className = 'cronenbergs';
-document.querySelectorAll('#resultados').innerHTML = showInfo(cronenbergs);
-}
-if (eventId === 'imgDiseas') {
-document.querySelector('#btnOrder').className = 'diseases';
-document.querySelectorAll('#resultados').innerHTML = showInfo(diseases);
-}
-if (eventId === 'imgParasito') {
-document.querySelector('#btnOrder').className = 'parasites';
-document.querySelectorAll('#resultados').innerHTML = showInfo(parasites);
-}
-if (eventId === 'imgHumanoide') {
-document.querySelector('#btnOrder').className = 'humanoids';
-document.querySelectorAll('#resultados').innerHTML = showInfo(humanoids);
-}
-}
-//funcion que crea el evento (del target id) con un forEach
-imgCharacters.forEach((elem) => {
-elem.addEventListener('click', (event) => {
-newFunction(event);
-});
-});
-
-idBotton.addEventListener('click', (event) => {
-let sortedByName = [];
-const eventClassName = event.currentTarget.className;
-
-if (eventClassName === 'humans') {
-sortedByName = sortAnythingByName(humans);
-}
-if (eventClassName === 'aliens') {
-sortedByName = sortAnythingByName(aliens);
-}
-if (eventClassName === 'unknowns') {
-sortedByName = sortAnythingByName(unknowns);
-}
-if (eventClassName === 'poopybuttholes') {
-sortedByName = sortAnythingByName(poopybuttholes);
-}
-if (eventClassName === 'mythologs') {
-sortedByName = sortAnythingByName(mythologs);
-}
-if (eventClassName === 'animals') {
-sortedByName = sortAnythingByName(animals);
-}
-if (eventClassName === 'vampires') {
-sortedByName = sortAnythingByName(vampires);
-}
-if (eventClassName === 'robots') {
-sortedByName = sortAnythingByName(robots);
-}
-if (eventClassName === 'cronenbergs') {
-sortedByName = sortAnythingByName(cronenbergs);
-}
-if (eventClassName === 'vampires') {
-sortedByName = sortAnythingByName(vampires);
-}
-if (eventClassName === 'diseases') {
-sortedByName = sortAnythingByName(diseases);
-}
-if (eventClassName === 'parasites') {
-sortedByName = sortAnythingByName(parasites);
-}
-if (eventClassName === 'humanoids') {
-sortedByName = sortAnythingByName(humanoids);
-}
-document.querySelector('#resultados').innerHTML = '';
-document.querySelectorAll('#resultados').innerHTML = showInfo(sortedByName);
-})
-
-//-------------------------CONTENEDOR DATA----------------------------------------
-// traer contenedor de especies y ocultar primer pantalla de inicio
-document.querySelector('#btnInicioData').addEventListener('click', () => {
-document.querySelector('#inicio').classList.add('esconder');
-document.querySelector('#contenedorData').classList.remove('esconder');
-document.querySelector('#contenedorData').innerHTML = '';
-document.querySelectorAll('#contenedorData').innerHTML = showInfoAll(dataAll);
-})
+document.querySelector('#genderx').addEventListener('click', goTop)
+*/

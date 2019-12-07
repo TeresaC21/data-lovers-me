@@ -70,5 +70,6 @@ Para: Poder conocerlos y ubicarlos.
       * Tambien investigamos sobre colores conforme a la serie y algunos efectos que no cansaran la vista y visualmente se entienda la interfaz.
 
 ***
-[Da click aqui para abrir Rick And Morty]( (https://biancardona.github.io/GDL004-data-lovers/src/index.html)
+[Da click aqui para abrir Rick And Morty]( (https://https://teresac21.github.io/data-lovers-me/src/index.html) 
+
 [Da click aqui para abrir Rick And Morty]( (https://teresaC21.github.io/GDL004-data-lovers/src/index.html)    
