@@ -31,9 +31,8 @@ Para: Poder conocerlos y ubicarlos.
   
       * Imagen final de tu proyecto.
 
-![alt text](https://github.com/Biancardona/GDL004-data-lovers/blob/developtere/src/img/proto1.png)
-![alt text](https://github.com/Biancardona/GDL004-data-lovers/blob/developtere/src/img/proto2.png)
-![alt text](https://github.com/Biancardona/GDL004-data-lovers/blob/developtere/src/img/proto3.png)
+![alt text](https://github.com/TeresaC21/data-lovers-me/blob/master/src/img/pantalla1.png)
+![alt text](https://github.com/TeresaC21/data-lovers-me/blob/master/src/img/pantalla-busq.png)
 
 ***
 
@@ -70,6 +69,6 @@ Para: Poder conocerlos y ubicarlos.
       * Tambien investigamos sobre colores conforme a la serie y algunos efectos que no cansaran la vista y visualmente se entienda la interfaz.
 
 ***
-[Da click aqui para abrir Rick And Morty - Segunda versión]( (https://teresac21.github.io/data-lovers-me/src/index.html) 
+[Da click aqui para abrir Rick And Morty - Versión actual]( (https://teresac21.github.io/data-lovers-me/src/index.html) 
 
 [Da click aqui para abrir Rick And Morty - primera versión]( (https://teresaC21.github.io/GDL004-data-lovers/src/index.html)    
